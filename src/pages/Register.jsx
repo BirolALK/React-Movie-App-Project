@@ -2,14 +2,26 @@ import React, { useState } from "react";
 import GoogleIcon from "../assets/icons/GoogleIcon";
 
 const Register = () => {
+  //*ayrı stateler
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  //*birleştirilmiş state
+  // const [info, setInfo] = useState({
+  //   firstName:"",
+  //   lastName:"",
+  //   email:"",
+  //   password:"",
+  // })
+
   const handleSubmit = (e) =>{
     e.preventDefault();
     console.log(firstName, lastName);
-  }
+  };
+
+  // const handleChange =(e) =>
+  // setInfo({...info, [e.target.id]: e.target.value});
   return (
     <div className="flex justify-center"> 
     <div className="form image hidden md:block">
