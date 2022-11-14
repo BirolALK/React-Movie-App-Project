@@ -1,19 +1,15 @@
-import React, { useEffect } from "react";
-import { userObserver } from "./auth/firebase";
+import React from "react";
+import { ToastContainer } from "react-toastify";
 import AuthContextProvider from "./context/AuthContextProvider";
 import AppRouter from "./router/AppRouter";
 
 const App = () => {
-  useEffect(() => {
-   userObserver()
-  }, [])
-  
   return (
-    <div>
+    <div className="dark:bg-[#23242a]">
       <AuthContextProvider>
-        <AppRouter/>
+        <AppRouter />
+        <ToastContainer />
       </AuthContextProvider>
-      
     </div>
   );
 };
