@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import avatar from '../assets/icons/avatar.png'
 import { Logout } from "../auth/firebase";
+import { AuthContext } from "../context/AuthContextProvider";
 
 
 const Navbar = () => {
+  const { currentUser } = useContext(AuthContext);
   // const currentUser = {displayName: "birol alkan"};
-  const currentUser = false;
+  // const currentUser = false;
   return (
     <>
       <nav className="w-full flex flex-wrap items-center justify-between py-3 bg-gray-900  text-white shadow-lg navbar navbar-expand-lg fixed-top">
@@ -18,7 +20,7 @@ const Navbar = () => {
         {/* Right elements */}
         <div className="flex items-center relative">
           {/* Icon */}
-          {currentUser && <h5 className="mr-2 capitalize">{currentUser ?.displayName}</h5>}
+          {currentUser && <h5 className="mr-2 capitalize">{currentUser?.displayName}</h5>}
           <div className="dropdown relative">
             <span
               className="dropdown-toggle flex items-center hidden-arrow"

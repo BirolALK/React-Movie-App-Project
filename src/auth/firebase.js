@@ -37,13 +37,12 @@ export const signIn =  async(email, password, navigate) => {
   }
 };
 
-export const userObserver = () => {
+export const userObserver = (setCurrentUser) => {
   onAuthStateChanged(auth, (user) => {
     if (user) {
-      // User is signed in, see docs for a list of available properties
-      // https://firebase.google.com/docs/reference/js/firebase.User
-      const uid = user.uid;
-      // ...
+      const {email, displayName, photoURL} = user
+      setCurrentUser({email, displayName, photoURL})
+      console.log(user);
     } else {
      console.log("user signed out");
     }
