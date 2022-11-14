@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 
 //* Your web app's Firebase configuration
 // TODO: Replace the following with your app's Firebase project configuration
@@ -17,9 +17,12 @@ const app = initializeApp(firebaseConfig);
 // Initialize Firebase Authentication and get a reference to the service
 const auth = getAuth(app);
 
-export const createuser = async(email, password, navigate) => {
+export const createuser = async(email, password, navigate, displayName) => {
   try {
-   let userCredential= await createUserWithEmailAndPassword(auth, email, password)
+   let userCredential= await createUserWithEmailAndPassword(auth, email, password);
+   await updateProfile(auth.currentUser, {
+    diplayName: displayName,
+   }) 
    navigate("/");
    console.log(userCredential)
   } catch (error) {
@@ -51,4 +54,5 @@ export const userObserver = (setCurrentUser) => {
 
 export const Logout = () => {
   signOut (auth)
-}
+};
+

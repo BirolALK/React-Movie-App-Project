@@ -20,8 +20,8 @@ const Register = () => {
 
   const handleSubmit = (e) =>{
     e.preventDefault();
-    createuser(email, password)
-    navigate("/");
+    const displayName = `${firstName} ${lastName}`
+    createuser(email, password, navigate, displayName);
     console.log(firstName, lastName);
   };
 
