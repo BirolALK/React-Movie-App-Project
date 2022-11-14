@@ -51,5 +51,5 @@ export const userObserver = () => {
 };
 
 export const Logout = () => {
-  signOut(auth)
+  signOut (auth)
 }
